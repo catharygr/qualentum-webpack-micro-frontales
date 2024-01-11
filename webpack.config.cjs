@@ -19,4 +19,31 @@ module.exports = (_, argv) => ({
   experiments: {
     outputModule: true,
   },
+  // Configurar el servidor de desarrollo
+  devServer: {
+    port: 3000,
+    historyApiFallback: true,
+  },
+  // Configuración de los source maps
+  devtool: argv.mode === "development" ? "source-map" : false,
+  module: {
+    // Reglas de los módulos
+    rules: [
+      // Se pone la regla para los archivos js por defecto
+      {
+        test: /\.n?js$/,
+        exclude: /node_modules/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      // Se pone la regla para babel
+      {
+        test: /\.(ts|tsx|js|mjs|jsx)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
+    ],
+  },
 });
