@@ -16,4 +16,7 @@ module.exports = (_, argv) => ({
     path: path.resolve(__dirname, "dist"),
   },
   // Configurar webpack para que utlice modulos de tipo ES6
+  experiments: {
+    outputModule: true,
+  },
 });
