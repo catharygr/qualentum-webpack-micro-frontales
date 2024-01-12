@@ -75,7 +75,6 @@ module.exports = (_, argv) => ({
     ],
   },
   // Configuración de los plugins
-  // Configuración de los plugins
   plugins: [
     // Se pone la configuración de html
     new HtmlWebpackPlugin({
