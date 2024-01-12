@@ -56,6 +56,35 @@ module.exports = (_, argv) => ({
           "sass-loader",
         ],
       },
+      // Se pone la regla para las imagenes, fuentes, audios y videos
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3|wav|mp4|webm)$/,
+        exclude: /node_modules/,
+        type: "asset/resource",
+        // Se configura assets y uso de las carpetas de assets
+        generator: {
+          filename: "assets/[name][ext]",
+        },
+      },
+      // Se pone la regla para los archivos html
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        use: ["html-loader"],
+      },
     ],
   },
+  // Configuración de los plugins
+  // Configuración de los plugins
+  plugins: [
+    // Se pone la configuración de html
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      scriptLoading: "module",
+    }),
+    // Se pone la configuración de css
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
+  ],
 });
