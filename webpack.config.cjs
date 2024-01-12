@@ -44,6 +44,18 @@ module.exports = (_, argv) => ({
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
+      // Se pone la regla para css
+      {
+        test: /\.css|s[ac]ss$/i,
+        exclude: /node_modules/,
+        use: [
+          argv.mode === "development"
+            ? "style-loader"
+            : MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader",
+        ],
+      },
     ],
   },
 });
