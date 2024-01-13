@@ -23,4 +23,3 @@ export class WebComponentTitle extends LitElement {
     `;
   }
 }
-window.customElements.define("web-component-title", WebComponentTitle);
